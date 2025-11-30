@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <image id="n1_hfjm" name="n1" src="zt9e8j" fileName="SampleResources/通用资源/quanlity_0.png" xy="1150,-4" size="769,141">
+      <relation target="" sidePair="width-width%,height-height%,center-center%,middle-middle%"/>
+    </image>
+  </displayList>
+</component>

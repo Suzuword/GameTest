@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="h7a838e1">
+  <resources>
+    <component id="o0rb0" name="Main.xml" path="/Panel/" exported="true"/>
+    <image id="zt9e7t" name="9.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e7u" name="8.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e7v" name="7.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e7w" name="6.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e7x" name="5.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e7y" name="4.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e7z" name="3.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e80" name="20.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e81" name="2.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e82" name="19.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e83" name="18.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e84" name="17.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e85" name="16.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e86" name="15.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e87" name="14.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e88" name="13.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e89" name="12.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e8a" name="11.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e8b" name="10.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e8c" name="1.png" path="/SampleResources/序列帧动画/"/>
+    <image id="zt9e8f" name="ui_DL_anniuxiao_01.png" path="/SampleResources/登录注册/登录注册/" scale="9grid" scale9grid="44,21,88,42"/>
+    <image id="zt9e8h" name="ui_DL_an_queding_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e8i" name="ui_DL_an_zhuce_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e8q" name="ui_TY_xuanzekuang_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e8r" name="ui_TY_gouxuan_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e8s" name="ui_DL_zhuangshi_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e8t" name="ui_DL_xuanzefuwuqi_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e8u" name="ui_DL_weihu_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e8v" name="ui_DL_shangcidenglu_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e8w" name="ui_DL_new_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e8x" name="ui_DL_liuchang_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e8y" name="ui_DL_kuang_01.png" path="/SampleResources/登录注册/登录注册/" scale="9grid" scale9grid="17,16,34,32"/>
+    <image id="zt9e8z" name="ui_DL_jinruyouxi_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e90" name="ui_DL_huobao_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e91" name="ui_DL_fuwuqixuanze_02.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e92" name="ui_DL_fuwuqixuanze_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e93" name="ui_DL_fuwuqiliebiao_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e94" name="ui_DL_fanhua_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e95" name="ui_DL_dianjihuanqu_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e96" name="ui_DL_an_quxiao_01.png" path="/SampleResources/登录注册/登录注册/"/>
+    <image id="zt9e7s" name="BK.jpg" path="/SampleResources/登录注册/"/>
+    <image id="zt9e8l" name="账号登陆.jpg" path="/SampleResources/示意图/"/>
+    <image id="zt9e8m" name="账号注册.jpg" path="/SampleResources/示意图/"/>
+    <image id="zt9e8n" name="服务器选择2.jpg" path="/SampleResources/示意图/"/>
+    <image id="zt9e8o" name="服务器选择.jpg" path="/SampleResources/示意图/"/>
+    <image id="zt9e8p" name="提示.jpg" path="/SampleResources/示意图/"/>
+    <image id="zt9e6g" name="ui_TY_lvseshuzi_09.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6h" name="ui_TY_lvseshuzi_08.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6i" name="ui_TY_lvseshuzi_07.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6j" name="ui_TY_lvseshuzi_06.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6k" name="ui_TY_lvseshuzi_05.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6l" name="ui_TY_lvseshuzi_04.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6m" name="ui_TY_lvseshuzi_03.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6n" name="ui_TY_lvseshuzi_02.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6o" name="ui_TY_lvseshuzi_01.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6p" name="ui_TY_lvseshuzi_00.png" path="/SampleResources/通用资源/" exported="true" scale9grid="0,0,-2,0" qualityOption="source"/>
+    <image id="zt9e6q" name="ui_TY_juesemignzidi_01.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6r" name="ui_TY_fanhui_01.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6s" name="ui_TY_erjikuang_01.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6t" name="ui_TY_di_shensebj_01.png" path="/SampleResources/通用资源/" scale="9grid" scale9grid="5,5,26,31"/>
+    <image id="zt9e6u" name="ui_TY_daojudiban_01.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6v" name="ui_TY_biaotilan_01.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6w" name="quanlity_5.png" path="/SampleResources/通用资源/" scale="9grid" scale9grid="12,11,73,73"/>
+    <image id="zt9e6y" name="quanlity_4.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e7q" name="quanlity_3.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e7r" name="quanlity_1.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e8j" name="quanlity_0.png" path="/SampleResources/通用资源/" scale="9grid" scale9grid="24,24,48,48"/>
+    <image id="gpn6e0" name="bk.png" path="/SampleResources/通用资源/" scale="9grid" scale9grid="24,24,48,48"/>
+    <sound id="zt9e1" name="btnMusic.mp3" path="/SampleResources/"/>
+    <font id="zt9e8d" name="STHUPO.TTF" path="/SampleResources/" renderMode="" samplePointSize="16"/>
+  </resources>
+  <publish name=""/>
+</packageDescription>
