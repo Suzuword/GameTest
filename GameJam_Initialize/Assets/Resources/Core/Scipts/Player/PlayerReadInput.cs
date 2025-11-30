@@ -6,49 +6,32 @@ using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerReadInput : MonoBehaviour
 {
-    PlayerInput input;
-    InputAction run;
-    // Start is called before the first frame update
+    [Header("Movement Settings")]
+    public float moveSpeed = 5f; // 移动速度
+
+    private Vector2 _movementInput; // 存储输入值的变量
+    private Rigidbody2D _rb; // 刚体引用
+
+    // 在Start中获取组件
     void Start()
     {
-        input = GetComponent<PlayerInput>();
-        InputActionAsset asset = Resources.Load<InputActionAsset>("Core/config/PlayerInputMap");
-        if (asset == null)
-        {
-            Debug.LogError("InputActionAsset 加载失败！请检查路径和资源名称。");
-            return;
-        }
-        else
-        {
-            Debug.Log("InputActionAsset 加载成功！");
-        }
-
-        input.actions = asset;
-        input.actions.Enable();
-
-        // 检查是否存在Move动作
-        if (input.actions["Move"] == null)
-        {
-            Debug.LogError("未找到名为 'Move' 的输入动作！");
-            return;
-        }
-
-        run = input.actions["Move"];
-        run.performed += OnMovePerformed;
-        run.Enable();
-
-        Debug.Log("Move 动作已注册和启用。");
+        _rb = GetComponent<Rigidbody2D>();
     }
 
-    void OnMovePerformed(InputAction.CallbackContext context)
+    // 在FixedUpdate中处理物理移动
+    void FixedUpdate()
     {
-        Debug.Log("OnMovePerformed 被调用！");
-        print(context.ReadValue<Vector2>());
+        // 创建一个移动方向向量
+        Vector2 movement = new Vector3(_movementInput.x,  _movementInput.y) * moveSpeed;
+
+        // 注意：如果你的角色不需要物理碰撞，可以直接用Transform：
+         transform.Translate(movement * Time.deltaTime, Space.World);
     }
 
-    // Update is called once per frame
-    void Update()
+    // 这个函数将由Player Input组件在收到"Move"输入时自动调用
+    public void OnMove(InputAction.CallbackContext context)
     {
-
+        // 从输入系统中读取Vector2类型的输入值
+        _movementInput = context.ReadValue<Vector2>();
     }
 }
