@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: febd6fdc4d6bef64793bcd825d1f7dac, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 18df2d03a59a47e49ba2125f1b7c0ecc, type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -148,7 +148,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
   m_DeviceRegainedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -169,24 +169,12 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
-    m_ActionId: 90ec6e37-ac94-4e56-9a8b-f5a8b50c12e4
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c70d7cc5-c184-4b9a-94cf-02ca697250db
-    m_ActionName: Player/Attack
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 650b8618-bc9c-413a-bae4-801a6f3d6b8a
-    m_ActionName: Player/Run
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 51bbe328-8415-4cae-8de0-2b280c42b3ca
-    m_ActionName: Player/Jump[/Keyboard/space]
+        m_CallState: 2
+    m_ActionId: dafb05e0-f6fd-488e-90a1-862de35c5ad4
+    m_ActionName: player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &-7762607709570614603
@@ -217,7 +205,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
