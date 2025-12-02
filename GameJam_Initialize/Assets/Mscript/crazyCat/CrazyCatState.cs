@@ -11,7 +11,7 @@ public class CrazyCatState : MonoBehaviour
     public Transform Player;
 
     IState patrol;
-    IState dash;
+   public IState dash;
     IState getHurt;
     IState die;
 
@@ -21,7 +21,7 @@ public class CrazyCatState : MonoBehaviour
         dash= GetComponent<CrazyCatDash>();
         die = GetComponent<CrazyCatDie>();
         getHurt= GetComponent<CrazyCatGetHurt>();
-        this.TransState(ECrazyCatState.Patrol);
+        this.TransState(ECrazyCatState.Dash);
     }
     public void TransState(ECrazyCatState state)
     {

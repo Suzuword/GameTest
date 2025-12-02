@@ -19,7 +19,7 @@ public class CatState : MonoBehaviour
   public  IState chase;
   public  IState ha;
     IState attack;
-    IState die;
+   public IState die;
     IState getHurt;
     IState haWhenFailedChase;
     public void Start()
