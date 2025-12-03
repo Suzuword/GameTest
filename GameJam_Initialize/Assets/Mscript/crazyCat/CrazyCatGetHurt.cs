@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class CrazyCatGetHurt : MonoBehaviour,IState
 {
+    CrazyCatState state;
     public void OnEnter()
     {
-        throw new System.NotImplementedException();
+        state = GetComponent<CrazyCatState>();
+        Invoke("ToChase", 1f);
     }
 
     public void OnExit()
     {
-        throw new System.NotImplementedException();
+      
     }
 
     public void OnKeep()
     {
-        throw new System.NotImplementedException();
+       
     }
-
+    private void ToChase()
+    { state.TransState(ECrazyCatState.Dash); }
    
 }

@@ -9,7 +9,11 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.GetComponent<CharacterHealth>()?.GetHurt(this);
+        if (collision.CompareTag("Enemy")) {
+            
+        collision.GetComponent<CharacterHealth>().GetHurt(this);
+           
+        this.gameObject.SetActive(false);}
     }
    
 }

@@ -13,7 +13,7 @@ public class CrazyCatState : MonoBehaviour
     IState patrol;
    public IState dash;
     IState getHurt;
-    IState die;
+   public IState die;
 
     private void Start()
     {
