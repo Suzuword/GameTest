@@ -18,10 +18,17 @@ public class PlayerReadInput : MonoBehaviour
     private Rigidbody2D _rb; // 刚体引用
     private bool _isGrounded; // 是否在地面上
 
+    Animator playerAni;
+
+    bool isJump;
+
     // 在Start中获取组件
     void Start()
     {
+        playerAni = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
+
+        isJump = false;
 
         // 使用射线向下检测地面
 
@@ -35,6 +42,9 @@ public class PlayerReadInput : MonoBehaviour
     // 在FixedUpdate中处理物理移动和地面检测
     void FixedUpdate()
     {
+        //更新朝向
+        UpdateToward();
+
         //// 检测是否在地面上
         //CheckGrounded();
 
@@ -49,6 +59,40 @@ public class PlayerReadInput : MonoBehaviour
     void Update()
     {
         CheckGrounded();
+        if (_isGrounded)
+        {
+            if (_movementInput.x == 0f)
+            {
+                playerAni.Play("PlayerStand");
+            }
+            else
+            {
+                playerAni.Play("PlayerRun");
+            }
+        }
+
+
+        if(isJump&& _rb.velocity.y < 0)
+        {
+            playerAni.Play("PlayerJumpToFall");
+            playerAni.SetBool("isJump", false);
+            isJump = false;
+        }
+    }
+
+    void UpdateToward()
+    {
+        switch (_movementInput.x) {
+            case 1.0f:
+                this.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                break;
+            case-1.0f:
+                this.transform.rotation = Quaternion.Euler(Vector3.zero);
+                break;
+            default:
+                break;
+        }
+
     }
 
     // 地面检测方法
@@ -86,6 +130,9 @@ public class PlayerReadInput : MonoBehaviour
     }
 
     public void OnJump(InputAction.CallbackContext context){
+        print("jump");
+        playerAni.SetBool("isJump", true);
+        isJump = true;
         // 只在按键按下的瞬间执行
         if (context.started)
         {

@@ -53,3 +53,6 @@ TagManager:
   - name: head
     uniqueID: 3933339215
     locked: 0
+  - name: handsUp
+    uniqueID: 3711924789
+    locked: 0
