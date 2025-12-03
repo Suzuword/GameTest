@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: foot
+    uniqueID: 106797001
+    locked: 0
+  - name: body
+    uniqueID: 1410043293
+    locked: 0
+  - name: hands
+    uniqueID: 895671973
+    locked: 0
+  - name: head
+    uniqueID: 3933339215
     locked: 0

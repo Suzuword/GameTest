@@ -84,18 +84,24 @@ public class MainCamera : MonoBehaviour
     /// </summary>
     public void FollowTarget()
     {
-        if (target == null) return;
+        //手动差值计算
+        Vector3 tarGetPosition = target.position;
+        tarGetPosition = ApplyBounds(tarGetPosition);
+        Vector3 moveToward = ((target.position - transform.position) * Vector3.Distance(target.position, transform.position)).normalized;
+        moveToward.z = 0;
+        this.transform.Translate(moveToward* 3*Vector3.Distance(target.position, transform.position) * Time.deltaTime);
+        //if (target == null) return;
 
-        Vector3 desiredPosition = new Vector3(target.position.x, target.position.y, cameraZPosition);
-        Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
+        //Vector3 desiredPosition = new Vector3(target.position.x, target.position.y, cameraZPosition);
+        //Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
 
-        // 应用边界限制
-        if (useBounds)
-        {
-            smoothedPosition = ApplyBounds(smoothedPosition);
-        }
+        //// 应用边界限制
+        //if (useBounds)
+        //{
+        //    smoothedPosition = ApplyBounds(smoothedPosition);
+        //}
 
-        transform.position = smoothedPosition;
+        //transform.position = smoothedPosition;
     }
 
     /// <summary>
