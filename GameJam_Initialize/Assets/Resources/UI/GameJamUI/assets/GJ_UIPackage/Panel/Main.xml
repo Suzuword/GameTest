@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
+  <controller name="Skill2Ani" pages="0,allReady,1,load" selected="0">
+    <action type="play_transition" fromPage="" toPage="0" transition="t0"/>
+    <action type="play_transition" fromPage="0" toPage="1" transition="t1"/>
+  </controller>
   <displayList>
-    <image id="n1_hfjm" name="n1" src="zt9e8j" fileName="SampleResources/通用资源/quanlity_0.png" xy="1150,-4" size="769,141">
-      <relation target="" sidePair="width-width%,height-height%,center-center%,middle-middle%"/>
-    </image>
+    <component id="n2_e84n" name="n2" src="e84ne1" fileName="Panel/HPbar.xml" xy="1120,0">
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <movieclip id="n3_e84n" name="n3" src="e84ne2" fileName="Resources/技能01(02).jta" xy="-5,-2" size="213,213" aspect="true"/>
+    <component id="n6_e84n" name="n6" src="e84ne3" fileName="Panel/PYbar.xml" xy="1515,102">
+      <ProgressBar value="50" max="100"/>
+    </component>
   </displayList>
+  <transition name="t0">
+    <item time="0" type="Animation" target="n3_e84n" value="44,s"/>
+  </transition>
+  <transition name="t1">
+    <item time="0" type="Animation" target="n3_e84n" value="0,p"/>
+    <item time="18" type="Animation" target="n3_e84n" value="50,s"/>
+  </transition>
 </component>

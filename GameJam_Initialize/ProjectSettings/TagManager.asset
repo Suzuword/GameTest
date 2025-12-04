@@ -41,15 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: foot
+  - name: SceneryDown
     uniqueID: 106797001
     locked: 0
   - name: body
     uniqueID: 1410043293
     locked: 0
-  - name: hands
-    uniqueID: 895671973
+  - name: Scenery
+    uniqueID: 2655416309
     locked: 0
-  - name: head
-    uniqueID: 3933339215
+  - name: SceneryUp
+    uniqueID: 3999817041
     locked: 0
