@@ -208,26 +208,30 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
     /// <summary>
     /// 动画事件：斩击动画开始
     /// </summary>
-    public void OnSlashStart()
+    public void OnSlashStart()//蓄力斩击攻击帧起点执行
     {
-        Debug.Log("斩击开始 - 可在此处添加攻击判定");
+        //可在此处添加攻击判定
 
-        // 示例：根据蓄力时间计算伤害
+        // 示例：根据蓄力时间计算伤害,仅供参考
         // float damageMultiplier = 1.0f + (currentChargeTime / chargeTimeRequired);
         // ApplyDamage(damageMultiplier);
+
     }
 
     /// <summary>
     /// 动画事件：斩击动画结束
     /// </summary>
-    public void OnSlashEnd()
+    public void OnSlashEnd()//蓄力斩击攻击帧结束点执行
     {
         // 斩击完成，回到空闲状态
         currentState = ChargeState.Idle;
         currentChargeTime = 0f;
         StartCoroutine(getInCD());
 
-        Debug.Log("斩击结束，回到站立状态");
+        //Debug.Log("斩击结束，回到站立状态");
+        //可在此处添加攻击判定
+
+
     }
 
     /// <summary>
