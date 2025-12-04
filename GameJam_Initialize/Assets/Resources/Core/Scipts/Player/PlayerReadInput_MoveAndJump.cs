@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerReadInput : MonoBehaviour
+public class PlayerReadInput_MoveAndJump : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f; // 移动速度
@@ -16,11 +16,13 @@ public class PlayerReadInput : MonoBehaviour
 
     private Vector2 _movementInput; // 存储输入值的变量
     private Rigidbody2D _rb; // 刚体引用
-    private bool _isGrounded; // 是否在地面上
+    public bool _isGrounded; // 是否在地面上
 
     Animator playerAni;
 
     bool isJump;
+
+    PlayerReadInput_Attack attackScript;
 
     // 在Start中获取组件
     void Start()
@@ -29,6 +31,8 @@ public class PlayerReadInput : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
 
         isJump = false;
+    
+        attackScript = GetComponent<PlayerReadInput_Attack>();
 
         // 使用射线向下检测地面
 
@@ -59,7 +63,7 @@ public class PlayerReadInput : MonoBehaviour
     void Update()
     {
         CheckGrounded();
-        if (_isGrounded)
+        if (_isGrounded && attackScript.currentComboStep == 0)
         {
             if (_movementInput.x == 0f)
             {

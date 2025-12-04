@@ -31,10 +31,10 @@ public class MainCamera : MonoBehaviour
 
     [Header("缩放设置")]
     [Tooltip("是否启用缩放功能")]
-    public bool enableZoom = false;
+    public bool enableZoom = true;
 
     [Tooltip("目标缩放大小")]
-    public float targetZoom = 5f;
+    public float targetZoom = 5.75f;
 
     [Tooltip("最小缩放值")]
     public float minZoom = 3f;
@@ -91,8 +91,10 @@ public class MainCamera : MonoBehaviour
         //moveToward.z = 0;
         //this.transform.Translate(moveToward* 3*Vector3.Distance(target.position, transform.position) * Time.deltaTime);
         if (target == null) return;
+        
 
         Vector3 desiredPosition = new Vector3(target.position.x, target.position.y, cameraZPosition);
+        if (target.name == "Player") desiredPosition.y = desiredPosition.y + 1.4f;
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
 
         // 应用边界限制
