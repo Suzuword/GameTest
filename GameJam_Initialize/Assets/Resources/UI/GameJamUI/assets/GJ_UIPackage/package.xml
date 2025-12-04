@@ -65,13 +65,58 @@
     <image id="zt9e6u" name="ui_TY_daojudiban_01.png" path="/SampleResources/通用资源/"/>
     <image id="zt9e6v" name="ui_TY_biaotilan_01.png" path="/SampleResources/通用资源/"/>
     <image id="zt9e6w" name="quanlity_5.png" path="/SampleResources/通用资源/" scale="9grid" scale9grid="12,11,73,73"/>
-    <image id="zt9e6y" name="quanlity_4.png" path="/SampleResources/通用资源/"/>
+    <image id="zt9e6y" name="quanlity_4.png" path="/SampleResources/通用资源/" scale="9grid" scale9grid="24,24,48,48"/>
     <image id="zt9e7q" name="quanlity_3.png" path="/SampleResources/通用资源/"/>
     <image id="zt9e7r" name="quanlity_1.png" path="/SampleResources/通用资源/"/>
     <image id="zt9e8j" name="quanlity_0.png" path="/SampleResources/通用资源/" scale="9grid" scale9grid="24,24,48,48"/>
     <image id="gpn6e0" name="bk.png" path="/SampleResources/通用资源/" scale="9grid" scale9grid="24,24,48,48"/>
     <sound id="zt9e1" name="btnMusic.mp3" path="/SampleResources/"/>
     <font id="zt9e8d" name="STHUPO.TTF" path="/SampleResources/" renderMode="" samplePointSize="16"/>
+    <component id="e84ne1" name="HPbar.xml" path="/Panel/"/>
+    <movieclip id="e84ne2" name="技能01(02).jta" path="/Resources/"/>
+    <component id="e84ne3" name="PYbar.xml" path="/Panel/"/>
+    <image id="e84ne4" name="技能01(02)_0000.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84ne5" name="技能01(02)_0023.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84ne6" name="技能01(02)_0024.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84ne7" name="技能01(02)_0025.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84ne8" name="技能01(02)_0026.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84ne9" name="技能01(02)_0027.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nea" name="技能01(02)_0028.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84neb" name="技能01(02)_0029.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nec" name="技能01(02)_0030.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84ned" name="技能01(02)_0031.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nee" name="技能01(02)_0032.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nef" name="技能01(02)_0033.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84neg" name="技能01(02)_0034.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84neh" name="技能01(02)_0035.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nei" name="技能01(02)_0036.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nej" name="技能01(02)_0037.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nek" name="技能01(02)_0038.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nel" name="技能01(02)_0039.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nem" name="技能01(02)_0022.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nen" name="技能01(02)_0021.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84neo" name="技能01(02)_0020.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nep" name="技能01(02)_0019.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84neq" name="技能01(02)_0001.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84ner" name="技能01(02)_0002.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nes" name="技能01(02)_0003.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84net" name="技能01(02)_0004.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84neu" name="技能01(02)_0005.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nev" name="技能01(02)_0006.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84new" name="技能01(02)_0007.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nex" name="技能01(02)_0008.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84ney" name="技能01(02)_0040.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nez" name="技能01(02)_0009.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nf0" name="技能01(02)_0011.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nf1" name="技能01(02)_0012.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nf2" name="技能01(02)_0013.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nf3" name="技能01(02)_0014.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nf4" name="技能01(02)_0015.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nf5" name="技能01(02)_0016.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nf6" name="技能01(02)_0017.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nf7" name="技能01(02)_0018.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nf8" name="技能01(02)_0010.png" path="/Resources/GalibangTexture/"/>
+    <image id="e84nf9" name="技能01(02)_0041.png" path="/Resources/GalibangTexture/"/>
   </resources>
   <publish name=""/>
 </packageDescription>
