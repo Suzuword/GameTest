@@ -199,7 +199,7 @@ public class PlayerReadInput_Attack : MonoBehaviour
     /// </summary>
     private System.Collections.IEnumerator DelayedComboReset()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1f);
 
         // 检查是否没有新的连击输入
         if (Time.time - lastAttackTime > comboWindow)

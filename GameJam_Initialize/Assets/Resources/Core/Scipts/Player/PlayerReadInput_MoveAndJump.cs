@@ -23,6 +23,7 @@ public class PlayerReadInput_MoveAndJump : MonoBehaviour
     bool isJump;
 
     PlayerReadInput_Attack attackScript;
+    PlayerReadInput_Skill2 skill2;
 
     // 在Start中获取组件
     void Start()
@@ -33,6 +34,7 @@ public class PlayerReadInput_MoveAndJump : MonoBehaviour
         isJump = false;
     
         attackScript = GetComponent<PlayerReadInput_Attack>();
+        skill2 = GetComponent<PlayerReadInput_Skill2>();
 
         // 使用射线向下检测地面
 
@@ -57,13 +59,19 @@ public class PlayerReadInput_MoveAndJump : MonoBehaviour
 
         // 使用刚体设置水平速度，保持垂直速度不变
         _rb.velocity = new Vector2(movement.x, _rb.velocity.y);
+
+        if (skill2.currentState != PlayerReadInput_Skill2.ChargeState.Idle)
+        {
+            _rb.velocity = new Vector2(0, 0);
+        }
     }
 
     // 更新时检测地面（更准确）
     void Update()
     {
         CheckGrounded();
-        if (_isGrounded && attackScript.currentComboStep == 0)
+
+        if (_isGrounded && attackScript.currentComboStep == 0 && skill2.currentState == PlayerReadInput_Skill2.ChargeState.Idle)
         {
             if (_movementInput.x == 0f)
             {
