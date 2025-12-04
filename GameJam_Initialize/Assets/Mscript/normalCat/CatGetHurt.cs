@@ -8,8 +8,10 @@ public class CatGetHurt : MonoBehaviour,IState
     CatState state;
     public void OnEnter()
     {
-        //²¥·ÅÊÜ»÷¶¯»­
+        
         animator = GetComponent<Animator>();
+        state = GetComponent<CatState>();
+        animator.Play("smallMaoDieHurt");
     }
 
     public void OnExit()

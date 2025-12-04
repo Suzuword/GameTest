@@ -6,10 +6,16 @@ public class CatDie : MonoBehaviour,IState
 {
     Animator animator;
     CatState state;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        state = GetComponent<CatState>();
+    }
     public void OnEnter()
     {
-        //²¥·ÅÊÜ»÷¶¯»­
-        animator = GetComponent<Animator>();
+
+        animator.Play("smallMaoDieDead");
     }
 
     public void OnExit()
@@ -21,6 +27,10 @@ public class CatDie : MonoBehaviour,IState
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.normalizedTime > 0.99f)
-        { Destroy(this.gameObject); }
+        { Invoke("DestroyObject", 1f); }
+    }
+    void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 }

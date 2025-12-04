@@ -2,28 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatAttackDetection : MonoBehaviour
+public class BossCatAttackDet : MonoBehaviour
 {
-   public CatState state;
-    public bool canAttack;
-
+    public BossCatState State;
     private void Start()
     {
-        state = GetComponentInParent<CatState>();
+        State=GetComponentInParent<BossCatState>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
-            canAttack = true;
-            state.TransState(NormalCatState.Attack); }
+            State.canAttack = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+       
+    
+        if(collision.CompareTag("Player"))
         {
-            canAttack = false;
-           
+            State.canAttack = false;
         }
+    
     }
 }

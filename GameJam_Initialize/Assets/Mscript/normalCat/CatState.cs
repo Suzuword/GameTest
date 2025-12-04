@@ -10,27 +10,28 @@ public enum NormalCatState
 }
 public class CatState : MonoBehaviour
 {
-    public int HaInt;
+
    NormalCatState catState;
   public  GameObject[] patorlPos;
    public IState currentState;
     public Transform Player;
-    IState patrol;
+   public IState patrol;
   public  IState chase;
-  public  IState ha;
+
     IState attack;
    public IState die;
     IState getHurt;
-    IState haWhenFailedChase;
+    public CatAttackDetection attackDetection;
+  
     public void Start()
     {
       patrol = GetComponent<CatPatrol>();
       chase= GetComponent<CatChase>();
-      ha= GetComponent<CatHa>();
+    
       attack = GetComponent<CatAttack>();
       die = GetComponent<CatDie>();
       getHurt = GetComponent<CatGetHurt>();
-haWhenFailedChase=GetComponent<CatHaWhenFailedChase>();
+
         TransState(NormalCatState.Patorl);
     }
     public void TransState(NormalCatState state)
@@ -39,11 +40,11 @@ haWhenFailedChase=GetComponent<CatHaWhenFailedChase>();
         {
             NormalCatState.Patorl => this.patrol,
             NormalCatState.Chase => this.chase,
-            NormalCatState.Ha => this.ha,
+      
             NormalCatState.Attack => this.attack,
             NormalCatState.Die => this.die,
             NormalCatState.GetHurt => this.getHurt,
-            NormalCatState.HaWhenFailedChase => this.haWhenFailedChase,
+    
             _ => this.patrol
         };
         

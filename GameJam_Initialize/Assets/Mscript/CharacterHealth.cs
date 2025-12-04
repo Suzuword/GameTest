@@ -30,7 +30,7 @@ public class CharacterHealth : MonoBehaviour
             rb.AddForce(backDir * attacker.knockBackForce, ForceMode2D.Impulse);
         }
         if (health <= 0) { 
-        //²¥·ÅËÀÍö¶¯»­
+        
         
         }
     }

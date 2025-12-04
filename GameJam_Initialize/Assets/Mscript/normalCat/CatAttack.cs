@@ -6,10 +6,16 @@ public class CatAttack : MonoBehaviour,IState
 {
     Animator animator;
     CatState catstate;
+
+    private void Start()
+    {
+         animator = GetComponent<Animator>();
+        catstate = GetComponent<CatState>();
+    }
     public void OnEnter()
     {
-       //²¥·Å¹¥»÷¶¯»­
-       animator = GetComponent<Animator>();
+        animator.Play("smallMaoDieAttack");
+      
     }
 
     public void OnExit()
@@ -21,7 +27,11 @@ public class CatAttack : MonoBehaviour,IState
     {
        AnimatorStateInfo stateInfo=animator.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.normalizedTime >= 0.99f)
-        { catstate.TransState(NormalCatState.Chase); }
+        { if (catstate.attackDetection.canAttack)
+            { catstate.TransState(NormalCatState.Attack); }
+            else
+            { catstate.TransState(NormalCatState.Chase); }
+        }
     }
 
 }

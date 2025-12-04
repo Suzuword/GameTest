@@ -13,7 +13,14 @@ public class Attack : MonoBehaviour
             
         collision.GetComponent<CharacterHealth>().GetHurt(this);
            
-        this.gameObject.SetActive(false);}
+       }
     }
-   
+  void attackStart()
+    {
+        this.gameObject.SetActive(true);
+    }
+    void attackEnd()
+    {
+        this.gameObject.SetActive(false);
+    }
 }

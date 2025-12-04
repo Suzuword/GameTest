@@ -4,30 +4,29 @@ using UnityEngine;
 
 public class GiantCatAttack : MonoBehaviour,IState
 {
+    Animator animator;
+    GiantCatState catstate;
     public void OnEnter()
     {
-        throw new System.NotImplementedException();
+        //²¥·Å¹¥»÷¶¯»­
+        animator = GetComponent<Animator>();
+        catstate=GetComponentInParent<GiantCatState>();
     }
 
     public void OnExit()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public void OnKeep()
     {
-        throw new System.NotImplementedException();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (stateInfo.normalizedTime >= 0.99f)
+        {
+            if (catstate.attackDetection.canAttack)
+                catstate.TransState(EGiantCatState.Attack);
+            else
+            {catstate.TransState(EGiantCatState.Patrol);}
+        }
     }
 }

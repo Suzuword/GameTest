@@ -10,11 +10,10 @@ public class CatHealth : CharacterHealth
   public override void GetHurt(Attack attacker)
     {
         base.GetHurt(attacker);
-        if (catState.currentState != catState.die)
-        {
-            catState.TransState(NormalCatState.GetHurt);
-        }
-
+       if(health>0)
+        { catState.TransState(NormalCatState.GetHurt); }
+       if(health<=0)
+        { catState.TransState(NormalCatState.Die); }
     }
 
 
