@@ -169,7 +169,7 @@ public class PlayerReadInput_Attack : MonoBehaviour
     /// <summary>
     /// 动画事件：攻击动画开始
     /// </summary>
-    public void OnAttackStart(int comboStep)
+    public void OnAttackStart(int comboStep) //参数表示当前攻击为第comboStep个连段
     {
         isAttacking = true;
         Debug.Log($"攻击{comboStep}开始，可以在此处添加攻击判定");

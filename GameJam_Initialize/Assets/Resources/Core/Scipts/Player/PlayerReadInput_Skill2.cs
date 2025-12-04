@@ -24,6 +24,10 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
 
     PlayerReadInput_MoveAndJump moveAndJump;
     PlayerReadInput_Attack attackScript;
+
+    public float skillCD = 1f;
+    public bool skillReady;
+
     // 动画哈希值
     private int chargeProgressHash;
     private int isChargingHash;
@@ -51,6 +55,8 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
 
         moveAndJump = GetComponent<PlayerReadInput_MoveAndJump>();
         attackScript = GetComponent<PlayerReadInput_Attack>();
+
+        skillReady = true;
     }
 
     void Update()
@@ -61,6 +67,7 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
         //某些状态下禁止蓄力
         if(moveAndJump._isGrounded == false)chargeInputPressed = false;
         if(attackScript.currentComboStep != 0) chargeInputPressed = false;
+        if (!skillReady) chargeInputPressed = false;
 
         // 状态机更新
         switch (currentState)
@@ -218,6 +225,7 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
         // 斩击完成，回到空闲状态
         currentState = ChargeState.Idle;
         currentChargeTime = 0f;
+        StartCoroutine(getInCD());
 
         Debug.Log("斩击结束，回到站立状态");
     }
@@ -259,6 +267,13 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
     public ChargeState GetCurrentState()
     {
         return currentState;
+    }
+
+    IEnumerator getInCD()
+    {
+        skillReady = false;
+        yield return new WaitForSeconds(skillCD);
+        skillReady = true;
     }
 
     /// <summary>

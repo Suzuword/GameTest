@@ -94,7 +94,7 @@ public class MainCamera : MonoBehaviour
         
 
         Vector3 desiredPosition = new Vector3(target.position.x, target.position.y, cameraZPosition);
-        if (target.name == "Player") desiredPosition.y = desiredPosition.y + 1.4f;
+        if (target.name == "Player") desiredPosition.y = desiredPosition.y + 2.3f;
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
 
         // 应用边界限制
