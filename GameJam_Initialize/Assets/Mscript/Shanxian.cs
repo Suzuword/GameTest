@@ -10,7 +10,7 @@ public class Shanxian : MonoBehaviour
     public bool isCool;
 
     public Vector2 Destination;
-    public Vector2 Offset;
+    public Vector2 Offset ;
     public Vector2 RectSize;
     public float CheckRidus;
     bool canFlash;
@@ -22,8 +22,10 @@ public class Shanxian : MonoBehaviour
 
     private void Start()
     {
+        Destination = new Vector2(5, 0);
         transState(Eshanx.max);
     }
+
     private void Update()
     {
         if(isCool&&coolTime>0)
@@ -33,13 +35,14 @@ public class Shanxian : MonoBehaviour
        if( Input.GetKeyDown(KeyCode.F)&&!isCool)
             { Flash(); }
         canFlash = !Physics2D.OverlapBox((Vector2)this.gameObject.transform.position + Offset, RectSize, 0f, ground);
-       
     }
+
     private void Flash()
     { if(canFlash)
       this.gameObject.transform.position = (Vector2)this.gameObject.transform.position + Destination;
       isCool=true;
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere((Vector2)this.gameObject.transform.position + Offset, CheckRidus);

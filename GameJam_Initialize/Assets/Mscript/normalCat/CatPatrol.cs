@@ -32,7 +32,6 @@ public class CatPatrol : MonoBehaviour, IState
 
     public void OnKeep()
     {
-        
         transform.position = Vector2.MoveTowards(transform.position,currentTarget.transform.position,patrolSpeed*Time.deltaTime);
        if (Vector2.Distance(currentTarget.transform.position, transform.position) < 0.21f)
         { AddPatrolIndex(); }

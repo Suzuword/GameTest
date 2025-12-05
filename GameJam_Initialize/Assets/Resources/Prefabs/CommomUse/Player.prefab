@@ -1077,6 +1077,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5502876560488319523}
+  - component: {fileID: 2455968053274864765}
   - component: {fileID: 8253405862634473884}
   - component: {fileID: 7511872908021775466}
   - component: {fileID: 6365909075495310487}
@@ -1120,6 +1121,29 @@ Transform:
   - {fileID: 4941232207028974192}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2455968053274864765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3983559157391309131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e767b0b09c7d0cc4eacdc1fab5dabbeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cool: 0
+  coolTime: 0
+  isCool: 0
+  Destination: {x: 0, y: 0}
+  Offset: {x: 0, y: 0}
+  RectSize: {x: 0, y: 0}
+  CheckRidus: 0
+  eshanx: 0
+  ground:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &8253405862634473884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,6 +1164,7 @@ MonoBehaviour:
     m_Bits: 64
   groundCheckPoint: {fileID: 6895562376977598836}
   _isGrounded: 0
+  shanxian: {fileID: 0}
 --- !u!114 &7511872908021775466
 MonoBehaviour:
   m_ObjectHideFlags: 0

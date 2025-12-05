@@ -379,7 +379,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671079169921205075}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.0004715323, w: 0.9999999}
+  m_LocalRotation: {x: -0, y: -0, z: 0.00047197932, w: 0.9999999}
   m_LocalPosition: {x: 0.58, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -441,7 +441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2892920655132112902}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.68842626, w: 0.7253064}
+  m_LocalRotation: {x: 0, y: 0, z: 0.6884259, w: 0.7253068}
   m_LocalPosition: {x: 0.4028671, y: 0.01206857, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -505,7 +505,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2980812922950667966}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.97994566, w: 0.19926493}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9799457, w: 0.19926482}
   m_LocalPosition: {x: 0.38126847, y: 0.26683074, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -603,7 +603,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3996780220194586549}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.1928095, w: 0.9812362}
+  m_LocalRotation: {x: 0, y: 0, z: 0.19280997, w: 0.98123616}
   m_LocalPosition: {x: -0.32783875, y: 0.25137055, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -635,7 +635,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4921525665968171426}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.076994866, w: 0.99703157}
+  m_LocalRotation: {x: -0, y: -0, z: 0.07699438, w: 0.99703157}
   m_LocalPosition: {x: 0.74, y: 0.01, z: 0}
   m_LocalScale: {x: 0.9877695, y: 0.98744756, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1547,6 +1547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2379919919427518909}
   patrolSpeed: 1.76
+  trackLen: 0
 --- !u!114 &681708874543433916
 MonoBehaviour:
   m_ObjectHideFlags: 0
