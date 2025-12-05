@@ -7,7 +7,7 @@ public class PlayerHealth : CharacterHealth
 
     public override void GetHurt(Attack attacker)
     {
-        //Κά»χ¶―»­
+       
         health = health - attacker.Damage;
     }
 }
