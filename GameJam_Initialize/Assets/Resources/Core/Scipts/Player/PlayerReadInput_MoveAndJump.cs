@@ -78,15 +78,18 @@ public class PlayerReadInput_MoveAndJump : MonoBehaviour
     {
         CheckGrounded();
 
-        if (_isGrounded && attackScript.currentComboStep == 0 && skill2.currentState == PlayerReadInput_Skill2.ChargeState.Idle && skill3.currentState == PlayerReadInput_Skill3.DefenseState.Idle)
+        if (attackScript.currentComboStep == 0 && skill2.currentState == PlayerReadInput_Skill2.ChargeState.Idle && skill3.currentState == PlayerReadInput_Skill3.DefenseState.Idle)
         {
-            if (_movementInput.x == 0f)
+            if (_isGrounded)
             {
-                playerAni.Play("PlayerStand");
-            }
-            else
-            {
-                playerAni.Play("PlayerRun");
+                if (_movementInput.x == 0f)
+                {
+                    playerAni.Play("PlayerStand");
+                }
+                else
+                {
+                    playerAni.Play("PlayerRun");
+                }
             }
         }
 
@@ -149,7 +152,6 @@ public class PlayerReadInput_MoveAndJump : MonoBehaviour
     }
 
     public void OnJump(InputAction.CallbackContext context){
-        print("jump");
         playerAni.SetBool("isJump", true);
         isJump = true;
         // 只在按键按下的瞬间执行
