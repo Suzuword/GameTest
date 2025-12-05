@@ -24,6 +24,7 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
 
     PlayerReadInput_MoveAndJump moveAndJump;
     PlayerReadInput_Attack attackScript;
+    PlayerReadInput_Skill3 skill3;
 
     public float skillCD = 1f;
     public bool skillReady;
@@ -55,6 +56,7 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
 
         moveAndJump = GetComponent<PlayerReadInput_MoveAndJump>();
         attackScript = GetComponent<PlayerReadInput_Attack>();
+        skill3 = GetComponent<PlayerReadInput_Skill3>();
 
         skillReady = true;
     }
@@ -67,6 +69,7 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
         //某些状态下禁止蓄力
         if(moveAndJump._isGrounded == false)chargeInputPressed = false;
         if(attackScript.currentComboStep != 0) chargeInputPressed = false;
+        if(skill3.currentState != PlayerReadInput_Skill3.DefenseState.Idle) chargeInputPressed = false;
         if (!skillReady) chargeInputPressed = false;
 
         // 状态机更新

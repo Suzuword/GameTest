@@ -8,13 +8,16 @@ public class CatPatrol : MonoBehaviour, IState
     CatState catState;
     Transform currentTarget;
     int currentIndex;
-  public  Animator animator;
+    public  Animator animator;
     public float patrolSpeed;
+    public float trackLen;
+
     private void Start()
     {
         catState=GetComponent<CatState>();
         currentTarget = catState.patorlPos[0].transform;
         animator = GetComponent<Animator>();
+        trackLen = 0.5f;
     }
     public void OnEnter()
     {

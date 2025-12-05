@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
-  <controller name="Skill2Ani" pages="0,allReady,1,load" selected="0">
+  <controller name="Skill2Ani" pages="0,allReady,1,load" selected="1">
     <action type="play_transition" fromPage="" toPage="0" transition="t0"/>
     <action type="play_transition" fromPage="0" toPage="1" transition="t1"/>
   </controller>
+  <controller name="GameStep" pages="0,GameWin,1,GameLose" selected="1"/>
   <displayList>
     <component id="n2_e84n" name="n2" src="e84ne1" fileName="Panel/HPbar.xml" xy="1120,0">
       <ProgressBar value="50" max="100"/>
@@ -12,6 +13,8 @@
     <component id="n6_e84n" name="n6" src="e84ne3" fileName="Panel/PYbar.xml" xy="1515,102">
       <ProgressBar value="50" max="100"/>
     </component>
+    <component id="n7_pzgk" name="n7" src="pzgkfa" fileName="Panel/GameLosePage.xml" xy="546,-800"/>
+    <component id="n8_pzgk" name="n8" src="pzgkfe" fileName="Panel/GameWinPage.xml" xy="550,-797"/>
   </displayList>
   <transition name="t0">
     <item time="0" type="Animation" target="n3_e84n" value="44,s"/>
@@ -19,5 +22,11 @@
   <transition name="t1">
     <item time="0" type="Animation" target="n3_e84n" value="0,p"/>
     <item time="18" type="Animation" target="n3_e84n" value="50,s"/>
+  </transition>
+  <transition name="GameLose">
+    <item time="0" type="XY" target="n7_pzgk" tween="true" startValue="546,-800" endValue="549,268" duration="24"/>
+  </transition>
+  <transition name="GameWin">
+    <item time="0" type="XY" target="n8_pzgk" tween="true" startValue="550,-797" endValue="548,286" duration="24"/>
   </transition>
 </component>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="800,550">
+  <displayList>
+    <image id="n0_pzgk" name="back" src="zt9e8j" fileName="SampleResources/通用资源/quanlity_0.png" xy="0,0" size="800,550">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n1_pzgk" name="title" xy="87,81" size="650,107" fontSize="80" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="游戏失败">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n2_pzgk" name="btn1" src="pzgkfb" fileName="Panel/Btn.xml" xy="244,384">
+      <Button title="重新开始"/>
+    </component>
+  </displayList>
+</component>

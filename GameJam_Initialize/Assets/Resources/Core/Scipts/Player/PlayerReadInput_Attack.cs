@@ -28,6 +28,8 @@ public class PlayerReadInput_Attack : MonoBehaviour
     private int attackSpeedHash;
 
     PlayerReadInput_MoveAndJump moveAndJump;
+    PlayerReadInput_Skill2 skill2;
+    PlayerReadInput_Skill3 skill3;
 
     void Start()
     {
@@ -48,6 +50,8 @@ public class PlayerReadInput_Attack : MonoBehaviour
 
         //
         moveAndJump = GetComponent<PlayerReadInput_MoveAndJump>();
+        skill2 = GetComponent<PlayerReadInput_Skill2>();
+        skill3 = GetComponent<PlayerReadInput_Skill3>();
     }
 
     void Update()
@@ -56,7 +60,7 @@ public class PlayerReadInput_Attack : MonoBehaviour
         CheckComboTimeout();
 
         // 2. ºÏ≤‚π•ª˜ ‰»Î
-        if (attackAction.triggered && moveAndJump._isGrounded && !isAttackCD)
+        if (attackAction.triggered && moveAndJump._isGrounded && !isAttackCD && skill2.currentState== PlayerReadInput_Skill2.ChargeState.Idle && skill3.currentState == PlayerReadInput_Skill3.DefenseState.Idle)
         {
             if (currentComboStep == 2) { StartCoroutine(AttackCDLoad(1f)); }
             else { StartCoroutine(AttackCDLoad()); }
