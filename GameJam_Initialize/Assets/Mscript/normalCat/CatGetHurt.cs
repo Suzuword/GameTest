@@ -11,6 +11,7 @@ public class CatGetHurt : MonoBehaviour,IState
         
         animator = GetComponent<Animator>();
         state = GetComponent<CatState>();
+        if(state.currentState!=state.die)
         animator.Play("smallMaoDieHurt");
     }
 
