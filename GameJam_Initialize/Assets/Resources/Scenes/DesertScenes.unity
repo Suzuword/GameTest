@@ -1344,6 +1344,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f1ab39c94c86fd4aaaa5c7b8b329b3b, type: 3}
+--- !u!1 &1589891111 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3983559157391309131, guid: 07b10141a33cdae419fa47e0ba30ab9c, type: 3}
+  m_PrefabInstance: {fileID: 7404371567882879203}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1661179446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1613,6 +1618,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5502876560488319523, guid: 07b10141a33cdae419fa47e0ba30ab9c, type: 3}
   m_PrefabInstance: {fileID: 7404371567882879203}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4411518297099653150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589891111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e767b0b09c7d0cc4eacdc1fab5dabbeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cool: 3
+  coolTime: 3
+  isCool: 0
+  Destination: {x: -4.08, y: 0.03}
+  Offset: {x: -2.28, y: 1.42}
+  RectSize: {x: -4.07, y: 1.12}
+  CheckRidus: 0.1
+  eshanx: 2
+  ground:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &4664215696558741189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1985,6 +2013,18 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.05872412
       objectReference: {fileID: 0}
+    - target: {fileID: 7419554360940366393, guid: 07b10141a33cdae419fa47e0ba30ab9c, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419554360940366393, guid: 07b10141a33cdae419fa47e0ba30ab9c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: c005c9ce-8c83-485b-ba74-fc882212e8c5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419554360940366393, guid: 07b10141a33cdae419fa47e0ba30ab9c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: Player/GaLiBang[/Keyboard/k]
+      objectReference: {fileID: 0}
     - target: {fileID: 7932458166960960152, guid: 07b10141a33cdae419fa47e0ba30ab9c, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.68418145
@@ -2029,7 +2069,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5502876560488319523, guid: 07b10141a33cdae419fa47e0ba30ab9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1359735245}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3983559157391309131, guid: 07b10141a33cdae419fa47e0ba30ab9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4411518297099653150}
   m_SourcePrefab: {fileID: 100100000, guid: 07b10141a33cdae419fa47e0ba30ab9c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

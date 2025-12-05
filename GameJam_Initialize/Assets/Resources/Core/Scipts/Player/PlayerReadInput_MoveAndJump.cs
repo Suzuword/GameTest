@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,6 +25,7 @@ public class PlayerReadInput_MoveAndJump : MonoBehaviour
 
     PlayerReadInput_Attack attackScript;
     PlayerReadInput_Skill2 skill2;
+   public Shanxian shanxian;
 
     // 在Start中获取组件
     void Start()
@@ -35,6 +37,7 @@ public class PlayerReadInput_MoveAndJump : MonoBehaviour
     
         attackScript = GetComponent<PlayerReadInput_Attack>();
         skill2 = GetComponent<PlayerReadInput_Skill2>();
+        shanxian = GetComponent<Shanxian>();
 
         // 使用射线向下检测地面
 
@@ -97,9 +100,13 @@ public class PlayerReadInput_MoveAndJump : MonoBehaviour
         switch (_movementInput.x) {
             case 1.0f:
                 this.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                shanxian.Destination=new Vector2(math.abs( shanxian.Destination.x), shanxian.Destination.y);
+                shanxian.Offset=new Vector2(math.abs(shanxian.Offset.x), shanxian.Offset.y);
                 break;
             case-1.0f:
                 this.transform.rotation = Quaternion.Euler(Vector3.zero);
+                shanxian.Destination = new Vector2(-math.abs(shanxian.Destination.x), shanxian.Destination.y);
+                shanxian.Offset = new Vector2(-math.abs(shanxian.Offset.x), shanxian.Offset.y);
                 break;
             default:
                 break;

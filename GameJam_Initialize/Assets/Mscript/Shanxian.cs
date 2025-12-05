@@ -15,6 +15,7 @@ public class Shanxian : MonoBehaviour
     public float CheckRidus;
     bool canFlash;
     public Eshanx eshanx;
+   
     
     [SerializeField] LayerMask ground;
 
