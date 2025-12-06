@@ -83,8 +83,6 @@ public class PlayerReadInput_Skill3 : MonoBehaviour
     {
         defenseInputPressed = defenseAction.ReadValue<float>() > 0.5f;
 
-        print(currentState);
-
         UpdateDefenseTimer();
         UpdateDefenseState();
         UpdateShieldTransparency();

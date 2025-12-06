@@ -190,14 +190,17 @@ public class PlayerReadInput_Attack : MonoBehaviour
         switch (comboStep)
         {
             case 0:
+                AudioMgr.Instance.PlaySound("平a一段");
                 //第一段攻击判定相关代码
                 break;
 
             case 1:
+                AudioMgr.Instance.PlaySound("平a二段");
                 //第二段攻击相关代码
                 break;
 
             case 2:
+                AudioMgr.Instance.PlaySound("平a三段+明显后摇");
                 //第三段攻击相关代码
                 break;
 

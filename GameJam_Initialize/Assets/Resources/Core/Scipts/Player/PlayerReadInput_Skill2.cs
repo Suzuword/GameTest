@@ -91,12 +91,14 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
                 HandleIdleState();
                 break;
             case ChargeState.Charging:
+                AudioMgr.Instance.PlaySound("咖喱棒二技能");
                 HandleChargingState();
                 break;
             case ChargeState.Charged:
                 HandleChargedState();
                 break;
             case ChargeState.Slashing:
+                AudioMgr.Instance.PlaySound("平a一段");
                 HandleSlashingState();
                 break;
         }
