@@ -27,11 +27,9 @@ public class CatState : MonoBehaviour
     {
       patrol = GetComponent<CatPatrol>();
       chase= GetComponent<CatChase>();
-    
       attack = GetComponent<CatAttack>();
       die = GetComponent<CatDie>();
       getHurt = GetComponent<CatGetHurt>();
-
         TransState(NormalCatState.Patorl);
     }
     public void TransState(NormalCatState state)
