@@ -6,8 +6,12 @@ using UnityEngine.Events;
 public class CatHealth : CharacterHealth
 {
     [SerializeField] CatState catState;
-   
-  public override void GetHurt(Attack attacker)
+
+    protected override void Start()
+    {
+        catState=GetComponent<CatState>();
+    }
+    public override void GetHurt(Attack attacker)
     {
         base.GetHurt(attacker);
        if(health>0)
