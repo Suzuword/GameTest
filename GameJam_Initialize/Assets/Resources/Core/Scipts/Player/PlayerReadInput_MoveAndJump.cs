@@ -88,18 +88,12 @@ public class PlayerReadInput_MoveAndJump : MonoBehaviour
                 if (_movementInput.x == 0f)
                 {
                     playerAni.Play("PlayerStand");
-                    AudioMgr.Instance.StopSound("主角走路音效");
                 }
                 else
                 {
                     playerAni.Play("PlayerRun");
-                    AudioSource loopSource = AudioMgr.Instance.PlaySoundLoop("主角走路音效");
                 }
             }
-        }
-        else
-        {
-            AudioMgr.Instance.StopSound("主角走路音效");
         }
 
 

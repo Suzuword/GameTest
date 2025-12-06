@@ -35,14 +35,8 @@ public class AudioMgr : MonoBehaviour
 
     private Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
     private List<AudioSource> _audioSources = new List<AudioSource>();
-    private Dictionary<string, float> _lastPlayTime = new Dictionary<string, float>(); // 记录音效最后播放时间
-    private Dictionary<string, AudioSource> _activeLoopSounds = new Dictionary<string, AudioSource>(); // 正在播放的循环音效
-
     private const string AUDIO_RESOURCES_PATH = "Audio/";
     private const int INITIAL_POOL_SIZE = 5;
-
-    [Header("防重复播放设置")]
-    [SerializeField] private float _minPlayInterval = 0.1f; // 同一音效最小播放间隔(秒)
 
     #endregion
 
@@ -62,15 +56,6 @@ public class AudioMgr : MonoBehaviour
     /// 已加载的音效数量
     /// </summary>
     public int LoadedClipCount => _audioClips.Count;
-
-    /// <summary>
-    /// 获取或设置同一音效最小播放间隔(秒)
-    /// </summary>
-    public float MinPlayInterval
-    {
-        get => _minPlayInterval;
-        set => _minPlayInterval = Mathf.Max(0f, value);
-    }
 
     #endregion
 
@@ -106,8 +91,6 @@ public class AudioMgr : MonoBehaviour
             }
         }
         _audioClips.Clear();
-        _lastPlayTime.Clear();
-        _activeLoopSounds.Clear();
     }
 
     #endregion
@@ -172,122 +155,82 @@ public class AudioMgr : MonoBehaviour
     #region 公有方法 - 基础播放功能
 
     /// <summary>
-    /// 播放音效（只播放一次，防重复）
+    /// 播放音效（只播放一次）
     /// </summary>
     /// <param name="clipName">音效名称</param>
     /// <param name="volumeScale">音量缩放 (0-1)</param>
     /// <param name="pitch">音调</param>
-    /// <param name="allowOverlap">是否允许重叠播放同一音效</param>
     /// <returns>是否成功播放</returns>
-    public bool PlaySound(string clipName, float volumeScale = 1f, float pitch = 1f, bool allowOverlap = false)
+    public bool PlaySound(string clipName, float volumeScale = 1f, float pitch = 1f)
     {
         if (!IsSoundEnabled) return false;
 
-        // 检查音效是否存在
-        if (!_audioClips.TryGetValue(clipName, out AudioClip clip))
+        if (_audioClips.TryGetValue(clipName, out AudioClip clip))
         {
-            Debug.LogWarning($"音效 '{clipName}' 未找到，请检查是否已加载");
-            return false;
-        }
-
-        // 检查是否允许重叠播放
-        if (!allowOverlap && IsSoundPlaying(clipName))
-        {
-            // 检查时间间隔
-            if (Time.time - GetLastPlayTime(clipName) < _minPlayInterval)
+            AudioSource audioSource = GetAvailableAudioSource();
+            if (audioSource != null)
             {
-                return false; // 距离上次播放时间太短，不播放
+                audioSource.pitch = pitch;
+                audioSource.PlayOneShot(clip, Mathf.Clamp01(volumeScale) * GlobalVolume);
+                return true;
             }
         }
-
-        AudioSource audioSource = GetAvailableAudioSource();
-        if (audioSource != null)
+        else
         {
-            audioSource.pitch = pitch;
-            audioSource.PlayOneShot(clip, Mathf.Clamp01(volumeScale) * GlobalVolume);
-
-            // 更新最后播放时间
-            UpdateLastPlayTime(clipName);
-            return true;
+            Debug.LogWarning($"音效 '{clipName}' 未找到，请检查是否已加载");
         }
 
         return false;
     }
 
     /// <summary>
-    /// 播放音效（指定位置，防重复）
+    /// 播放音效（指定位置）
     /// </summary>
     /// <param name="clipName">音效名称</param>
     /// <param name="position">播放位置</param>
     /// <param name="volumeScale">音量缩放</param>
-    /// <param name="allowOverlap">是否允许重叠播放同一音效</param>
     /// <returns>是否成功播放</returns>
-    public bool PlaySoundAtPoint(string clipName, Vector3 position, float volumeScale = 1f, bool allowOverlap = false)
+    public bool PlaySoundAtPoint(string clipName, Vector3 position, float volumeScale = 1f)
     {
         if (!IsSoundEnabled) return false;
 
-        // 检查音效是否存在
-        if (!_audioClips.TryGetValue(clipName, out AudioClip clip))
+        if (_audioClips.TryGetValue(clipName, out AudioClip clip))
         {
-            Debug.LogWarning($"音效 '{clipName}' 未找到，请检查是否已加载");
-            return false;
+            AudioSource.PlayClipAtPoint(clip, position, Mathf.Clamp01(volumeScale) * GlobalVolume);
+            return true;
         }
 
-        // 检查是否允许重叠播放
-        if (!allowOverlap && IsSoundPlaying(clipName))
-        {
-            // 检查时间间隔
-            if (Time.time - GetLastPlayTime(clipName) < _minPlayInterval)
-            {
-                return false; // 距离上次播放时间太短，不播放
-            }
-        }
-
-        AudioSource.PlayClipAtPoint(clip, position, Mathf.Clamp01(volumeScale) * GlobalVolume);
-
-        // 更新最后播放时间
-        UpdateLastPlayTime(clipName);
-        return true;
+        Debug.LogWarning($"音效 '{clipName}' 未找到，请检查是否已加载");
+        return false;
     }
 
     /// <summary>
-    /// 播放音效（循环播放，同一音效只允许一个实例）
+    /// 播放音效（循环播放）
     /// </summary>
     /// <param name="clipName">音效名称</param>
     /// <param name="volume">音量</param>
     /// <param name="pitch">音调</param>
-    /// <param name="allowMultiple">是否允许多个实例同时播放</param>
-    /// <returns>用于控制的AudioSource，如果已经有一个实例在播放则返回null</returns>
-    public AudioSource PlaySoundLoop(string clipName, float volume = 1f, float pitch = 1f, bool allowMultiple = false)
+    /// <returns>用于控制的AudioSource</returns>
+    public AudioSource PlaySoundLoop(string clipName, float volume = 1f, float pitch = 1f)
     {
         if (!IsSoundEnabled) return null;
 
-        // 检查音效是否存在
-        if (!_audioClips.TryGetValue(clipName, out AudioClip clip))
+        if (_audioClips.TryGetValue(clipName, out AudioClip clip))
+        {
+            AudioSource audioSource = GetAvailableAudioSource();
+            if (audioSource != null)
+            {
+                audioSource.clip = clip;
+                audioSource.volume = Mathf.Clamp01(volume) * GlobalVolume;
+                audioSource.pitch = pitch;
+                audioSource.loop = true;
+                audioSource.Play();
+                return audioSource;
+            }
+        }
+        else
         {
             Debug.LogWarning($"音效 '{clipName}' 未找到，请检查是否已加载");
-            return null;
-        }
-
-        // 如果不允许多个实例，且已有实例在播放，则返回null
-        if (!allowMultiple && _activeLoopSounds.ContainsKey(clipName))
-        {
-            return null;
-        }
-
-        AudioSource audioSource = GetAvailableAudioSource();
-        if (audioSource != null)
-        {
-            audioSource.clip = clip;
-            audioSource.volume = Mathf.Clamp01(volume) * GlobalVolume;
-            audioSource.pitch = pitch;
-            audioSource.loop = true;
-            audioSource.Play();
-
-            // 记录正在播放的循环音效
-            _activeLoopSounds[clipName] = audioSource;
-
-            return audioSource;
         }
 
         return null;
@@ -306,7 +249,6 @@ public class AudioMgr : MonoBehaviour
         {
             audioSource.Stop();
         }
-        _activeLoopSounds.Clear();
     }
 
     /// <summary>
@@ -320,28 +262,15 @@ public class AudioMgr : MonoBehaviour
             if (audioSource.clip != null && audioSource.clip.name == clipName && audioSource.isPlaying)
             {
                 audioSource.Stop();
-
-                // 如果这是一个循环音效，从活动循环音效字典中移除
-                if (_activeLoopSounds.ContainsKey(clipName))
-                {
-                    _activeLoopSounds.Remove(clipName);
-                }
             }
         }
     }
 
     /// <summary>
-    /// 检查音效是否正在播放（包括循环和非循环）
+    /// 检查音效是否正在播放
     /// </summary>
     public bool IsSoundPlaying(string clipName)
     {
-        // 检查循环音效
-        if (_activeLoopSounds.ContainsKey(clipName))
-        {
-            return true;
-        }
-
-        // 检查非循环音效
         foreach (var audioSource in _audioSources)
         {
             if (audioSource.clip != null && audioSource.clip.name == clipName && audioSource.isPlaying)
@@ -394,7 +323,6 @@ public class AudioMgr : MonoBehaviour
 
             // 从字典中移除
             _audioClips.Remove(clipName);
-            _lastPlayTime.Remove(clipName);
 
             // 注意：Resources.Load加载的资源需要使用Resources.UnloadAsset卸载
             // 但这里我们无法获取原始的AudioClip引用，所以由Resources系统管理
@@ -470,26 +398,6 @@ public class AudioMgr : MonoBehaviour
     public List<string> GetAllLoadedClipNames()
     {
         return new List<string>(_audioClips.Keys);
-    }
-
-    /// <summary>
-    /// 更新音效最后播放时间
-    /// </summary>
-    private void UpdateLastPlayTime(string clipName)
-    {
-        _lastPlayTime[clipName] = Time.time;
-    }
-
-    /// <summary>
-    /// 获取音效最后播放时间
-    /// </summary>
-    private float GetLastPlayTime(string clipName)
-    {
-        if (_lastPlayTime.TryGetValue(clipName, out float lastTime))
-        {
-            return lastTime;
-        }
-        return 0f;
     }
 
     #endregion

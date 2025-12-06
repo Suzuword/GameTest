@@ -18,9 +18,6 @@ public class Play_UI : MonoBehaviour
 
         playing_UI = BasicUIMgr.Instance.ShowPanel<GComponent>("GJ_UIPackage", "Main");
         skill2controller = playing_UI.GetController("Skill2Ani");
-
-        MusicManager.Instance.PlayMusic("desert", volume: 1f);
-        print("ɳĮ");
     }
 
     // Update is called once per frame
