@@ -121,6 +121,7 @@
     <component id="pzgkfb" name="Btn.xml" path="/Panel/"/>
     <component id="pzgkfd" name="Btn2.xml" path="/Panel/"/>
     <component id="pzgkfe" name="GameWinPage.xml" path="/Panel/"/>
+    <component id="iolpff" name="WordPanel.xml" path="/Panel/"/>
   </resources>
   <publish name=""/>
 </packageDescription>

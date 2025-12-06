@@ -11,6 +11,14 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
 
     [Header("组件引用")]
     [SerializeField] private Animator animator;
+    [SerializeField] private Transform attackPoint; // 攻击生成点
+
+    [Header("剑气配置")]
+    [SerializeField] private GameObject swordAuraPrefab; // 剑气预制体
+    [SerializeField] private float auraSpeed = 15f; // 剑气速度
+    [SerializeField] private Vector2 auraSize = new Vector2(3f, 1f); // 剑气大小
+    [SerializeField] private float auraMaxDistance = 10f; // 剑气最大距离
+
     private PlayerInput playerInput;
     private InputAction chargeAction;
 
@@ -26,6 +34,8 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
     PlayerReadInput_Attack attackScript;
     PlayerReadInput_Skill3 skill3;
 
+    private SwardEffect currentAura; // 当前剑气实例
+
     public float skillCD = 1f;
     public bool skillReady;
 
@@ -39,6 +49,8 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
     {
         // 初始化组件
         animator = GetComponent<Animator>();
+        attackPoint = this.transform;
+
         playerInput = GetComponent<PlayerInput>();
 
         // 获取输入动作
@@ -67,9 +79,9 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
         chargeInputPressed = chargeAction.ReadValue<float>() > 0.5f;
 
         //某些状态下禁止蓄力
-        if(moveAndJump._isGrounded == false)chargeInputPressed = false;
-        if(attackScript.currentComboStep != 0) chargeInputPressed = false;
-        if(skill3.currentState != PlayerReadInput_Skill3.DefenseState.Idle) chargeInputPressed = false;
+        if (moveAndJump._isGrounded == false) chargeInputPressed = false;
+        if (attackScript.currentComboStep != 0) chargeInputPressed = false;
+        if (skill3.currentState != PlayerReadInput_Skill3.DefenseState.Idle) chargeInputPressed = false;
         if (!skillReady) chargeInputPressed = false;
 
         // 状态机更新
@@ -172,6 +184,9 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
         currentState = ChargeState.Slashing;
         animator.SetTrigger(slashTriggerHash);
 
+        // 进入冷却
+        StartCoroutine(getInCD());
+
         Debug.Log("释放斩击！");
     }
 
@@ -209,55 +224,66 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
     }
 
     /// <summary>
-    /// 动画事件：斩击动画开始
-    /// </summary>
-    public void OnSlashStart()//蓄力斩击攻击帧起点执行
-    {
-        //可在此处添加攻击判定
-
-        // 示例：根据蓄力时间计算伤害,仅供参考
-        // float damageMultiplier = 1.0f + (currentChargeTime / chargeTimeRequired);
-        // ApplyDamage(damageMultiplier);
-
-    }
-
-    /// <summary>
-    /// 动画事件：斩击动画结束
-    /// </summary>
-    public void OnSlashEnd()//蓄力斩击攻击帧结束点执行
-    {
-        // 斩击完成，回到空闲状态
-        currentState = ChargeState.Idle;
-        currentChargeTime = 0f;
-        StartCoroutine(getInCD());
-
-        //Debug.Log("斩击结束，回到站立状态");
-        //可在此处添加攻击判定
-
-
-    }
-
-    /// <summary>
-    /// 动画事件：蓄力完成动画开始
+    /// 动画事件：蓄力完成开始
+    /// 由PlayerSkill2_GaliBangHold动画中的OnChargedStart事件调用
     /// </summary>
     public void OnChargedStart()
     {
-        Debug.Log("进入蓄力完成状态，等待释放");
-        // 可以在此处添加特效、音效等
+        // 这里可以添加蓄力完成时的特效、音效等
+        Debug.Log("蓄力完成动画事件触发");
+
+        // 示例：播放蓄力完成特效
+        // Instantiate(chargeCompleteEffect, transform.position, Quaternion.identity);
     }
 
     /// <summary>
-    /// 外部调用：更新蓄力时间要求
+    /// 动画事件：斩击动画开始
+    /// 由斩击动画中的事件调用
     /// </summary>
-    public void UpdateChargeTime(float newChargeTime)
+    public void OnSlashStart()//蓄力斩击攻击帧起点执行
     {
-        chargeTimeRequired = newChargeTime;
+        // 生成剑气
+        if (swordAuraPrefab != null && attackPoint != null)
+        {
+            // 确定飞行方向（根据角色面向）
+            Vector3 flightDirection = GetFacingDirection();
 
-        // 重新计算动画速度
-        float animationSpeed = chargeTimeRequired / chargingAnimationLength;
-        animator.SetFloat("ChargeSpeed", animationSpeed);
+            // 生成剑气实例
+            GameObject auraObj = Instantiate(swordAuraPrefab, attackPoint.position, Quaternion.identity);
 
-        Debug.Log($"更新蓄力时间: {chargeTimeRequired}秒, 动画速度: {animationSpeed:F2}");
+            // 获取剑气组件
+            currentAura = auraObj.GetComponent<SwardEffect>();
+
+            if (currentAura != null)
+            {
+                // 设置剑气参数
+                currentAura.SetFlightSpeed(auraSpeed);
+                currentAura.SetFinalSize(auraSize);
+                currentAura.SetMaxFlightDistance(auraMaxDistance);
+
+                // 开始飞行（使用攻击点位置和角色面向方向）
+                currentAura.StartFlight(attackPoint.position + new Vector3(0,1.5f,0), flightDirection);
+            }
+            else
+            {
+                Debug.LogWarning("剑气预制体上没有找到SwordAura组件！");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("剑气预制体或攻击点未设置！");
+        }
+    }
+
+    /// <summary>
+    /// 获取角色面向方向
+    /// </summary>
+    private Vector3 GetFacingDirection()
+    {
+        // 根据角色的旋转判断面向方向
+        // 假设角色在Y轴旋转0度时面向右，180度时面向左
+        bool isFacingRight = transform.rotation.eulerAngles.y == 0;
+        return isFacingRight ? Vector3.left : Vector3.right;
     }
 
     /// <summary>
@@ -284,20 +310,12 @@ public class PlayerReadInput_Skill2 : MonoBehaviour
     }
 
     /// <summary>
-    /// 调试用GUI显示
+    /// 动画事件：斩击动画结束
     /// </summary>
-    //void OnGUI()
-    //{
-    //    GUI.Label(new Rect(10, 10, 300, 20), $"状态: {currentState}");
-    //    GUI.Label(new Rect(10, 30, 300, 20), $"蓄力时间: {currentChargeTime:F2}/{chargeTimeRequired:F1}秒");
-    //    GUI.Label(new Rect(10, 50, 300, 20), $"蓄力进度: {GetChargeProgress() * 100:F0}%");
-    //    GUI.Label(new Rect(10, 70, 300, 20), $"按键状态: {(chargeInputPressed ? "按下" : "松开")}");
-
-    //    // 进度条可视化
-    //    Rect progressBarBg = new Rect(10, 95, 200, 20);
-    //    GUI.Box(progressBarBg, "");
-
-    //    Rect progressBar = new Rect(12, 97, 196 * GetChargeProgress(), 16);
-    //    GUI.Box(progressBar, "");
-    //}
+    public void OnSlashEnd()
+    {
+        // 返回空闲状态
+        currentState = ChargeState.Idle;
+        currentChargeTime = 0f;
+    }
 }
